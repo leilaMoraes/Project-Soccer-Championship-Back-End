@@ -13,7 +13,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Testa rota teams', () => {
+describe('Testa rota /teams', () => {
    let chaiHttpResponse: Response;
 
    afterEach(()=>{
