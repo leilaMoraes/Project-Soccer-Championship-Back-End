@@ -2,6 +2,7 @@ import * as express from 'express';
 import teamsRouter from './database/routes/TeamsRoutes';
 import 'express-async-errors';
 import errorMiddleware from './database/middlewares/error';
+import matchesRouter from './database/routes/MatchesRoutes';
 
 class App {
   public app: express.Express;
@@ -25,8 +26,9 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
-    this.app.use('/teams', teamsRouter);
     this.app.use(errorMiddleware);
+    this.app.use('/teams', teamsRouter);
+    this.app.use('/matches', matchesRouter);
   }
 
   public start(PORT: string | number):void {
