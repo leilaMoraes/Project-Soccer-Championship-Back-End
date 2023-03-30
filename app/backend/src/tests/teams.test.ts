@@ -26,4 +26,11 @@ describe('Testa rota teams', () => {
      expect(chaiHttpResponse.status).to.be.equal(200);
      expect(chaiHttpResponse.body).to.be.deep.equal(teams);
   });
+
+  it('2) Testa a rota /teams/:id com o findByPk', async () => {
+    sinon.stub(TeamsModel, 'findByPk').resolves(teams[1])
+     chaiHttpResponse = await chai.request(app).get('/teams/2');
+     expect(chaiHttpResponse.status).to.be.equal(200);
+     expect(chaiHttpResponse.body).to.be.deep.equal(teams[1]);
+  });
 });
