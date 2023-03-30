@@ -13,4 +13,9 @@ export default class TeamsService {
     const teams = await this.model.findAll();
     return { type: 200, message: teams };
   }
+
+  async getById(id: number): Promise<IServices> {
+    const team = await this.model.findByPk(id);
+    return { type: 200, message: team };
+  }
 }
