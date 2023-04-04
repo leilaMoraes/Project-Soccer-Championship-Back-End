@@ -23,21 +23,14 @@ export default class MatchesService {
   }
 
   async getInProgress(inProgress: string): Promise<IServices> {
-    if (inProgress === 'true') {
-      const matchesTrue = await this.modelM.findAll({ where: { inProgress: 1 },
+    const progressValue = inProgress === 'true' ? 1 : 0; {
+      const matches = await this.modelM.findAll({ where: { inProgress: progressValue },
         include: [
           { model: this.modelT, as: 'homeTeam' },
           { model: this.modelT, as: 'awayTeam' },
         ],
       });
-      return { type: 200, message: matchesTrue };
+      return { type: 200, message: matches };
     }
-    const matchesFalse = await this.modelM.findAll({ where: { inProgress: 0 },
-      include: [
-        { model: this.modelT, as: 'homeTeam' },
-        { model: this.modelT, as: 'awayTeam' },
-      ],
-    });
-    return { type: 200, message: matchesFalse };
   }
 }
