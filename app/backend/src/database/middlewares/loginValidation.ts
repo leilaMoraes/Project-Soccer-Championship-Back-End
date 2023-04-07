@@ -1,11 +1,17 @@
-import { NextFunction, Request, Response } from 'express';
+import { ILoginValidations, IUser } from '../interfaces';
 import ApiError from '../utils/ApiError';
 
-const loginValidation = (_res: Response, req: Request, next: NextFunction) => {
-  const { email, password } = req.body;
+export default class LoginValidations implements ILoginValidations {
+  emailValidation = (email: string): void => {
+    if (!email) throw new ApiError(400, 'All fields must be filled');
+  };
 
-  if (!email || !password) throw new ApiError(400, 'All fields must be filled');
-  next();
-};
+  passwordValidation = (password: string): void => {
+    if (!password) throw new ApiError(400, 'All fields must be filled');
+  };
 
-export default loginValidation;
+  loginValidation(login: IUser): void {
+    this.emailValidation(login.email);
+    this.passwordValidation(login.password);
+  }
+}

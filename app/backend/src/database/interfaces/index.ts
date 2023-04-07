@@ -17,3 +17,9 @@ export interface IUser extends UsersModel {
   password: string,
   role: string
 }
+
+export interface ILoginValidations {
+  emailValidation(email: string): void
+  passwordValidation(password: string): void
+  loginValidation(login: ILogin): void
+}
