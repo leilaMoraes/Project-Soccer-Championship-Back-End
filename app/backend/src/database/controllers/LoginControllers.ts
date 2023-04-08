@@ -8,7 +8,7 @@ export default class LoginController {
     this.service = new LoginService();
   }
 
-  getAll = async (res: Response, req: Request) => {
+  getAll = async (req: Request, res: Response) => {
     const { type, message } = await this.service.login(req.body);
     return res.status(type).json(message);
   };

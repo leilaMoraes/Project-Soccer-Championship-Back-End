@@ -14,9 +14,9 @@ export default class LoginService {
   }
 
   async login(login: ILogin): Promise<IServices> {
-    this.validations.loginValidation(login);
     const { email } = login;
-    await this.model.findOne({ where: { email } });
+    const user = await this.model.findOne({ where: { email } });
+    this.validations.loginValidation(login, user?.dataValues.password, user?.dataValues.email);
     const token = createToken(email);
     return { type: 200, message: { token } };
   }
