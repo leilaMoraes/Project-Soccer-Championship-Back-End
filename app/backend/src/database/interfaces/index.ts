@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import UsersModel from '../models/UsersModel';
 
 export interface IServices {
@@ -22,4 +23,8 @@ export interface ILoginValidations {
   emailValidation(email: string, dbEmail: string): void
   passwordValidation(password: string, dbPassword: string): void
   loginValidation(login: ILogin, dbPassword: string, dbEmail: string): void
+}
+
+export interface IRequest extends Request {
+  user?: Omit<ILogin, 'password'>;
 }

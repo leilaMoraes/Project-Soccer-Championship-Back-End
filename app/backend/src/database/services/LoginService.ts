@@ -20,4 +20,10 @@ export default class LoginService {
     const token = createToken(email);
     return { type: 200, message: { token } };
   }
+
+  async getRole(email: string): Promise<IServices> {
+    const user = await this.model.findOne({ where: { email } });
+    const role = user?.dataValues.role;
+    return { type: 200, message: { role } };
+  }
 }
