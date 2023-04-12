@@ -33,4 +33,9 @@ export default class MatchesService {
       return { type: 200, message: matches };
     }
   }
+
+  async finishingMatch(id: number): Promise<IServices> {
+    await this.modelM.update({ inProgress: 0 }, { where: { id } });
+    return { type: 200, message: 'Finished' };
+  }
 }
