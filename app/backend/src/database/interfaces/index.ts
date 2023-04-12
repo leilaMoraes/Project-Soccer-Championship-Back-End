@@ -38,3 +38,7 @@ export interface IMatch extends IGoals {
   homeTeamId: number,
   awayTeamId: number
 }
+
+export interface IMatchesValidations {
+  matchValidation(homeId: number, awayId: number): void
+}

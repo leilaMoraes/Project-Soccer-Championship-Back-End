@@ -1,15 +1,18 @@
 import { ModelStatic } from 'sequelize';
-import { IGoals, IMatch, IServices } from '../interfaces';
+import { IGoals, IMatch, IMatchesValidations, IServices } from '../interfaces';
+import MatchesValidations from '../middlewares/matchesValidation';
 import MatchesModel from '../models/MatchesModel';
 import TeamsModel from '../models/TeamsModel';
 
 export default class MatchesService {
   modelM: ModelStatic<MatchesModel>;
   modelT: ModelStatic<TeamsModel>;
+  validation: IMatchesValidations;
 
   constructor() {
     this.modelM = MatchesModel;
     this.modelT = TeamsModel;
+    this.validation = new MatchesValidations();
   }
 
   async getAll(): Promise<IServices> {
@@ -47,6 +50,7 @@ export default class MatchesService {
 
   async newMatch(match: IMatch): Promise<IServices> {
     const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = match;
+    this.validation.matchValidation(homeTeamId, awayTeamId);
     const newMatch = await this.modelM
       .create({ homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals, inProgress: 1 });
     return { type: 201, message: newMatch };
