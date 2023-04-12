@@ -1,5 +1,5 @@
 import { ModelStatic } from 'sequelize';
-import { IGoals, IServices } from '../interfaces';
+import { IGoals, IMatch, IServices } from '../interfaces';
 import MatchesModel from '../models/MatchesModel';
 import TeamsModel from '../models/TeamsModel';
 
@@ -43,5 +43,12 @@ export default class MatchesService {
     const { homeTeamGoals, awayTeamGoals } = goals;
     await this.modelM.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
     return { type: 200, message: 'Updated' };
+  }
+
+  async newMatch(match: IMatch): Promise<IServices> {
+    const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = match;
+    const newMatch = await this.modelM
+      .create({ homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals, inProgress: 1 });
+    return { type: 201, message: newMatch };
   }
 }

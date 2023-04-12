@@ -29,4 +29,9 @@ export default class MatchesController {
     const { type, message } = await this.service.updateMatches(Number(id), req.body);
     return res.status(type).json({ message });
   };
+
+  newMatch = async (res: Response, req: Request) => {
+    const { type, message } = await this.service.newMatch(req.body);
+    return res.status(type).json(message);
+  };
 }

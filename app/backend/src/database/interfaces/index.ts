@@ -31,5 +31,10 @@ export interface IRequest extends Request {
 
 export interface IGoals {
   homeTeamGoals: number,
-  awayTeamGoals: number,
+  awayTeamGoals: number
+}
+
+export interface IMatch extends IGoals {
+  homeTeamId: number,
+  awayTeamId: number
 }
