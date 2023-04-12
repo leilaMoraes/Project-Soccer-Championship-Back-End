@@ -28,3 +28,8 @@ export interface ILoginValidations {
 export interface IRequest extends Request {
   user?: Omit<ILogin, 'password'>;
 }
+
+export interface IGoals {
+  homeTeamGoals: number,
+  awayTeamGoals: number,
+}
