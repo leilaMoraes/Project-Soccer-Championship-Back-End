@@ -11,8 +11,6 @@ import { user, login, loginNoEmail, loginNoPassword, filledMessage, loginWrongEm
 import LoginService from '../database/services/LoginService';
 import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcryptjs';
-import LoginValidations from '../database/middlewares/loginValidation';
-import ApiError from '../database/utils/ApiError';
 
 chai.use(chaiHttp);
 

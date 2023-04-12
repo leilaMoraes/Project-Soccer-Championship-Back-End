@@ -1,3 +1,5 @@
+import { IMatch } from "../../database/interfaces";
+import MatchesModel from "../../database/models/MatchesModel";
 
 const matches: any = [{
   id: 1,
@@ -32,4 +34,9 @@ const matches: any = [{
   }
 }]
 
-export default matches;
+const updateGoals = {
+  homeTeamGoals: 3,
+  awayTeamGoals: 1
+}
+
+export {matches, updateGoals};
