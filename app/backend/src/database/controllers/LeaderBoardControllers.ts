@@ -12,4 +12,9 @@ export default class LBController {
     const { type, message } = await this.service.getAllHome();
     return res.status(type).json(message);
   };
+
+  getAllAway = async (_req: Request, res: Response) => {
+    const { type, message } = await this.service.getAllAway();
+    return res.status(type).json(message);
+  };
 }
