@@ -17,4 +17,9 @@ export default class LBController {
     const { type, message } = await this.service.getAllAway();
     return res.status(type).json(message);
   };
+
+  getAll = async (_req: Request, res: Response) => {
+    const { type, message } = await this.service.getAll();
+    return res.status(type).json(message);
+  };
 }
