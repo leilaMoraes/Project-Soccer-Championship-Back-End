@@ -37,7 +37,7 @@ ROUND(
       (COUNT(*) * 3.0)) * 100, 2) AS efficiency
 FROM TRYBE_FUTEBOL_CLUBE.teams AS t
 INNER JOIN TRYBE_FUTEBOL_CLUBE.matches AS m
-ON m.home_team_id = t.id
+ON m.away_team_id = t.id
 WHERE m.in_progress IS false
 GROUP BY name
 ORDER BY totalPoints DESC, totalVictories DESC, goalsBalance DESC, goalsFavor DESC;`;
