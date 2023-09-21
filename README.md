@@ -1,7 +1,7 @@
 # ⭐ Boas-Vindas ao Repositório Soccer Championship ⚽️
 > *Clique nas setas para ver mais* 
 <details>
-<summary><strong>👩‍💻 O que foi desenvolvido</strong></summary>
+<summary><strong>👩‍💻 O Que Foi Desenvolvido</strong></summary>
 <br />
   
   O projeto consistiu em desenvolver uma API (utilizando o método `TDD`) e também integrar *- através do docker-compose -* as aplicações para que elas funcionem consumindo um banco de dados.
@@ -14,7 +14,7 @@
 </details>
 
 <details>
-<summary><strong>👀 Para rodar localmente</strong></summary>
+<summary><strong>👀 Para Rodar Localmente</strong></summary>
 <br />
 
 > ⚠️ Configurações mínimas para execução do projeto
@@ -95,7 +95,7 @@ Para rodar os testes de integração desenvolvidos por mim, entre na pasta backe
     - Sinon
 </details>
 
-## Requisitos do projeto
+## Requisitos do Projeto
 
 <details><summary><strong>Docker</strong></summary> 
 
